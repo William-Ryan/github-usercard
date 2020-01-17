@@ -13,27 +13,75 @@ axios.get("https://api.github.com/users/William-Ryan")
   //   entryPoint.append(createCard(data))
   // })
 })
-  
 
 .catch(err => {
   console.log(err);
 })
 
-axios.get("https://api.github.com/users/${e}")
+axios.get("https://api.github.com/users/carlsachs")
 .then(res => {
   console.log(res);
   const entryPoint = document.querySelector(".cards");
   const data = res.data;
   const newCard = createCard(data);
-  followersArray.forEach((e) => {
-    entryPoint.append(createCard(data))
-  })
+  entryPoint.append(newCard);
 })
-  
 
-.catch(err => {
-  console.log(err);
+  .catch(err => {
+    console.log(err);
+  })
+
+  axios.get("https://api.github.com/users/Reikiryo")
+.then(res => {
+  console.log(res);
+  const entryPoint = document.querySelector(".cards");
+  const data = res.data;
+  const newCard = createCard(data);
+  entryPoint.append(newCard);
 })
+
+  .catch(err => {
+    console.log(err);
+  })
+
+  axios.get("https://api.github.com/users/seanaleid")
+  .then(res => {
+    console.log(res);
+    const entryPoint = document.querySelector(".cards");
+    const data = res.data;
+    const newCard = createCard(data);
+    entryPoint.append(newCard);
+  })
+  
+    .catch(err => {
+      console.log(err);
+    })
+
+    axios.get("https://api.github.com/users/ranccm")
+  .then(res => {
+    console.log(res);
+    const entryPoint = document.querySelector(".cards");
+    const data = res.data;
+    const newCard = createCard(data);
+    entryPoint.append(newCard);
+  })
+  
+    .catch(err => {
+      console.log(err);
+    })
+
+    axios.get("https://api.github.com/users/JosueRodriguez-webdev")
+    .then(res => {
+      console.log(res);
+      const entryPoint = document.querySelector(".cards");
+      const data = res.data;
+      const newCard = createCard(data);
+      entryPoint.append(newCard);
+    })
+    
+      .catch(err => {
+        console.log(err);
+      })
 /* Step 2: Inspect and study the data coming back, this is YOUR 
    github info! You will need to understand the structure of this 
    data in order to use it to build your component function 
@@ -56,7 +104,6 @@ axios.get("https://api.github.com/users/${e}")
 */
 
 const followersArray = ["carlsachs", "Reikiryo", "seanaleid", "ranccm", "JosueRodriguez-webdev"];
-
 
 /* Step 3: Create a function that accepts a single object as its only argument,
           Using DOM methods and properties, create a component that will return the following DOM element:
