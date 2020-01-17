@@ -5,7 +5,32 @@
 axios.get("https://api.github.com/users/William-Ryan")
 .then(res => {
   console.log(res);
+  const entryPoint = document.querySelector(".cards");
+  const data = res.data;
+  const newCard = createCard(data);
+  entryPoint.append(newCard);
+  // followersArray.forEach(e => {
+  //   entryPoint.append(createCard(data))
+  // })
 })
+  
+
+.catch(err => {
+  console.log(err);
+})
+
+axios.get("https://api.github.com/users/${e}")
+.then(res => {
+  console.log(res);
+  const entryPoint = document.querySelector(".cards");
+  const data = res.data;
+  const newCard = createCard(data);
+  followersArray.forEach((e) => {
+    entryPoint.append(createCard(data))
+  })
+})
+  
+
 .catch(err => {
   console.log(err);
 })
@@ -30,7 +55,8 @@ axios.get("https://api.github.com/users/William-Ryan")
           user, and adding that card to the DOM.
 */
 
-const followersArray = [];
+const followersArray = ["carlsachs", "Reikiryo", "seanaleid", "ranccm", "JosueRodriguez-webdev"];
+
 
 /* Step 3: Create a function that accepts a single object as its only argument,
           Using DOM methods and properties, create a component that will return the following DOM element:
@@ -84,14 +110,19 @@ function createCard(obj){
   name.textContent = obj.name;
   username.textContent = obj.login;
   location.textContent = obj.location;
-  profile.textContent = `Profile:`;
+  profile.textContent = `Profile:` ;
   github.href = obj.html_url;
-  github.textContent = obj.html_url;
+  github.textContent = `${obj.html_url}`;
   followers.textContent = obj.followers;
   following.textContent = obj.following;
   bio.textContent = obj.bio;
 
+  return card;
 }
+
+const entryPoint = document.querySelector(".cards");
+
+
 /* List of LS Instructors Github username's: 
   tetondan
   dustinmyers
