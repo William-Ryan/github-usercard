@@ -2,7 +2,86 @@
            (replacing the palceholder with your Github name):
            https://api.github.com/users/<your name>
 */
+axios.get("https://api.github.com/users/William-Ryan")
+.then(res => {
+  console.log(res);
+  const entryPoint = document.querySelector(".cards");
+  const data = res.data;
+  const newCard = createCard(data);
+  entryPoint.append(newCard);
+  // followersArray.forEach(e => {
+  //   entryPoint.append(createCard(data))
+  // })
+})
 
+.catch(err => {
+  console.log(err);
+})
+
+axios.get("https://api.github.com/users/carlsachs")
+.then(res => {
+  console.log(res);
+  const entryPoint = document.querySelector(".cards");
+  const data = res.data;
+  const newCard = createCard(data);
+  entryPoint.append(newCard);
+})
+
+  .catch(err => {
+    console.log(err);
+  })
+
+  axios.get("https://api.github.com/users/Reikiryo")
+.then(res => {
+  console.log(res);
+  const entryPoint = document.querySelector(".cards");
+  const data = res.data;
+  const newCard = createCard(data);
+  entryPoint.append(newCard);
+})
+
+  .catch(err => {
+    console.log(err);
+  })
+
+  axios.get("https://api.github.com/users/seanaleid")
+  .then(res => {
+    console.log(res);
+    const entryPoint = document.querySelector(".cards");
+    const data = res.data;
+    const newCard = createCard(data);
+    entryPoint.append(newCard);
+  })
+  
+    .catch(err => {
+      console.log(err);
+    })
+
+    axios.get("https://api.github.com/users/ranccm")
+  .then(res => {
+    console.log(res);
+    const entryPoint = document.querySelector(".cards");
+    const data = res.data;
+    const newCard = createCard(data);
+    entryPoint.append(newCard);
+  })
+  
+    .catch(err => {
+      console.log(err);
+    })
+
+    axios.get("https://api.github.com/users/JosueRodriguez-webdev")
+    .then(res => {
+      console.log(res);
+      const entryPoint = document.querySelector(".cards");
+      const data = res.data;
+      const newCard = createCard(data);
+      entryPoint.append(newCard);
+    })
+    
+      .catch(err => {
+        console.log(err);
+      })
 /* Step 2: Inspect and study the data coming back, this is YOUR 
    github info! You will need to understand the structure of this 
    data in order to use it to build your component function 
@@ -24,7 +103,7 @@
           user, and adding that card to the DOM.
 */
 
-const followersArray = [];
+const followersArray = ["carlsachs", "Reikiryo", "seanaleid", "ranccm", "JosueRodriguez-webdev"];
 
 /* Step 3: Create a function that accepts a single object as its only argument,
           Using DOM methods and properties, create a component that will return the following DOM element:
@@ -45,6 +124,51 @@ const followersArray = [];
 </div>
 
 */
+function createCard(obj){
+  const card = document.createElement("div");
+  const img = document.createElement("img");
+  const cardInfo = document.createElement("div");
+  const name = document.createElement("h3");
+  const username = document.createElement("p");
+  const location = document.createElement("p");
+  const profile = document.createElement("p");
+  const github = document.createElement("a");
+  const followers = document.createElement("p");
+  const following = document.createElement("p");
+  const bio = document.createElement("p");
+
+  card.append(img);
+  card.append(cardInfo);
+  cardInfo.append(name);
+  cardInfo.append(username);
+  cardInfo.append(location);
+  cardInfo.append(profile);
+  profile.append(github);
+  cardInfo.append(followers);
+  cardInfo.append(following);
+  cardInfo.append(bio);
+
+  card.classList.add("card");
+  cardInfo.classList.add("card-info");
+  name.classList.add("name");
+  username.classList.add("username");
+
+  img.src = obj.avatar_url;
+  name.textContent = obj.name;
+  username.textContent = obj.login;
+  location.textContent = obj.location;
+  profile.textContent = `Profile:` ;
+  github.href = obj.html_url;
+  github.textContent = `${obj.html_url}`;
+  followers.textContent = obj.followers;
+  following.textContent = obj.following;
+  bio.textContent = obj.bio;
+
+  return card;
+}
+
+const entryPoint = document.querySelector(".cards");
+
 
 /* List of LS Instructors Github username's: 
   tetondan
